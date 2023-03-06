@@ -1,4 +1,5 @@
 import { SET_WEATHER, SET_WEATHER_ERROR } from './types';
+import { saveSearch } from './searchHistoryActions';
 
 export const fetchWeather = (city) => (dispatch) => {
   fetch(
@@ -19,6 +20,7 @@ export const fetchWeather = (city) => (dispatch) => {
         type: SET_WEATHER,
         payload: weather,
       })
+      saveSearch(weather)(dispatch);
 })
     .catch((err) =>
       dispatch({

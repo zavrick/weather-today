@@ -1,0 +1,46 @@
+.search-history-placeholder-container {
+  color: #888;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+}
+
+.search-history-item-container {
+  border-bottom: 1px solid #CCC;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.search-history-right {
+  flex-direction: row;
+  display: flex;
+  justify-self: flex-end;
+}
+
+.search-history-time {
+  margin-right: 5px;
+}
+
+.search-history-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-history-action-button {
+  background-color: #CCC;
+  border: none;
+  border-radius: 50%;
+  color: black;
+  cursor: pointer;
+  font-size: smaller;
+  margin-left: 5px;
+  padding: 5px;
+}
