@@ -24,10 +24,10 @@ const SearchHistory = (props) => {
                       <div className="search-history-time">{time}</div>
                       <div className="search-history-actions">
                         <div className="search-history-action-button" onClick={() => dispatch(loadWeather(item))}>
-                          View
+                          <img src={`${process.env.PUBLIC_URL}/search.png`} alt="View" />
                         </div>
                         <div className="search-history-action-button" onClick={() => dispatch(deleteSearch(item.id))}>
-                          Delete
+                        <img src={`${process.env.PUBLIC_URL}/delete.png`} alt="Delete" />
                         </div>
                       </div>
                     </div>

@@ -38,9 +38,18 @@
   background-color: #CCC;
   border: none;
   border-radius: 50%;
+  box-sizing: border-box;
   color: black;
   cursor: pointer;
+  height: 24px;
+  width: 24px;
   font-size: smaller;
   margin-left: 5px;
-  padding: 5px;
+  padding: 4px;
+  text-align: center;
+}
+
+.search-history-action-button img {
+  height: 15px;
+  width: 15px;
 }
