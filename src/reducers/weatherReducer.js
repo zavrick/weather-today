@@ -1,7 +1,8 @@
-import { SET_WEATHER } from '../actions/types';
+import { SET_WEATHER, SET_WEATHER_ERROR } from '../actions/types';
 
 const initialState = {
   weather: {},
+  error: null,
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         weather: action.payload,
+      }
+    case SET_WEATHER_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       }
     default:
       return state;

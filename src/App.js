@@ -6,6 +6,7 @@ import './App.css';
 
 const App = (props) => {
   const [weather, setWeather] = useState(props.weather);
+
   useEffect(() => {
     setWeather(props.weather);
   }, [props.weather]);
@@ -15,7 +16,7 @@ const App = (props) => {
       <h2>Today's Weather</h2>
       <hr/>
       <SearchForm />
-      <CurrentWeather weather={weather} />
+      <CurrentWeather weather={weather}/>
     </div>
   );
 }

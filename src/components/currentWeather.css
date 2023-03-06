@@ -3,6 +3,14 @@
   padding: 0 20px;
 }
 
+.error-text {
+  background-color: #F0BBBB;
+  border: 1px solid #F00;
+  border-radius: 2px;
+  color: black;
+  padding: 5px 12px
+}
+
 .light-text {
   color: #888;
 }
