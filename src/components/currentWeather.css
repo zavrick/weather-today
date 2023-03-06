@@ -1,0 +1,13 @@
+.current-weather-container {
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.light-text {
+  color: #888;
+}
+
+td.label-cell {
+  color: #666;
+  padding-right: 10px;
+}

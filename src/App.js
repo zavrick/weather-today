@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import SearchForm from './components/searchForm';
+import CurrentWeather from './components/currentWeather';
 import './App.css';
 
 const App = (props) => {
@@ -11,13 +12,10 @@ const App = (props) => {
 
   return (
     <div className="App">
-      <h1>Today's Weather</h1>
+      <h2>Today's Weather</h2>
       <hr/>
       <SearchForm />
-      <div>
-        <h3>{weather?.weather?.name}</h3>
-        <p>{weather?.weather?.main?.temp}</p>
-      </div>
+      <CurrentWeather weather={weather} />
     </div>
   );
 }

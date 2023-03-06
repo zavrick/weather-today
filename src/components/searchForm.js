@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../actions/weatherActions';
+import './searchForm.css';
 
 const SearchForm = (props) => {
   const [city, setCity] = useState('');
@@ -18,7 +19,7 @@ const SearchForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="search-form">
       <form onSubmit={handleSubmit}>
         <label>City: </label>
         <input
