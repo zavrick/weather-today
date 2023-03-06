@@ -6,11 +6,11 @@ import { deleteSearch } from '../actions/searchHistoryActions';
 import './searchHistory.css';
 
 const SearchHistory = (props) => {
-  const results = [...props.history.results].reverse();
+  const results = props.history?.results?.length > 1 ? [...props.history.results].reverse() : props.history?.results;
   const dispatch = useDispatch();
 
   const renderHistory = (results) => {
-    if (results.length > 0) {
+    if (results && results.length > 0) {
       return (
         <ol>
           {
@@ -24,10 +24,10 @@ const SearchHistory = (props) => {
                       <div className="search-history-time">{time}</div>
                       <div className="search-history-actions">
                         <div className="search-history-action-button" onClick={() => dispatch(loadWeather(item))}>
-                          <img src={`${process.env.PUBLIC_URL}/search.png`} alt="View" />
+                          <img src={`/search.png`} alt="View" />
                         </div>
                         <div className="search-history-action-button" onClick={() => dispatch(deleteSearch(item.id))}>
-                        <img src={`${process.env.PUBLIC_URL}/delete.png`} alt="Delete" />
+                        <img src={`/delete.png`} alt="Delete" />
                         </div>
                       </div>
                     </div>
