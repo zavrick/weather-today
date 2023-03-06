@@ -1,20 +1,20 @@
-import { SAVE_RESULT, FETCH_RESULTS } from "../actions/types";
+import { SAVE_SEARCH, FETCH_SEARCHES } from "../actions/types";
 
 const initialState = {
-  results: [],
+  searches: [],
 };
 
 const searchHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SAVE_RESULT:
+    case SAVE_SEARCH:
       return {
         ...state,
-        results: action.payload,
+        searches: action.payload,
       };
-    case FETCH_RESULTS:
+    case FETCH_SEARCHES:
       return {
         ...state,
-        results: action.payload,
+        searches: action.payload,
       };
     default:
       return state;

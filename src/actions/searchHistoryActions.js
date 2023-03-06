@@ -1,31 +1,31 @@
-import { SAVE_RESULT, FETCH_RESULTS } from "./types";
+import { SAVE_SEARCH, FETCH_SEARCHES } from "./types";
 
-export const saveSearch = (result) => (dispatch) => {
-  const results = JSON.parse(localStorage.getItem("results"));
-  const newResults = results ? results.concat(result) : [result];
-  localStorage.setItem("results", JSON.stringify(newResults));
-  console.log(newResults)
+export const saveSearch = (search) => (dispatch) => {
+  const searches = JSON.parse(localStorage.getItem("searches"));
+  const newSearches = searches ? searches.concat(search) : [search];
+  localStorage.setItem("searches", JSON.stringify(newSearches));
+  console.log(newSearches)
   dispatch({
-    type: SAVE_RESULT,
-    payload: newResults,
+    type: SAVE_SEARCH,
+    payload: newSearches,
   });
 };
 
 export const fetchSearches = () => (dispatch) => {
-  const results = JSON.parse(localStorage.getItem("results"));
+  const searches = JSON.parse(localStorage.getItem("searches"));
   dispatch({
-    type: FETCH_RESULTS,
-    payload: results,
+    type: FETCH_SEARCHES,
+    payload: searches,
   });
 }
 
 export const deleteSearch = (id) => (dispatch) => {
-  const results = JSON.parse(localStorage.getItem("results"));
-  const index = results.findIndex((result) => result.id === id);
-  results.splice(index, 1);
-  localStorage.setItem("results", JSON.stringify(results));
+  const searches = JSON.parse(localStorage.getItem("searches"));
+  const index = searches.findIndex((search) => search.id === id);
+  searches.splice(index, 1);
+  localStorage.setItem("searches", JSON.stringify(searches));
   dispatch({
-    type: FETCH_RESULTS,
-    payload: results,
+    type: FETCH_SEARCHES,
+    payload: searches,
   });
 }

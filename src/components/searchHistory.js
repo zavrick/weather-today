@@ -6,15 +6,15 @@ import { deleteSearch } from '../actions/searchHistoryActions';
 import './searchHistory.css';
 
 const SearchHistory = (props) => {
-  const results = props.history?.results?.length > 1 ? [...props.history.results].reverse() : props.history?.results;
+  const searches = props.history?.searches?.length > 1 ? [...props.history.searches].reverse() : props.history?.searches;
   const dispatch = useDispatch();
 
-  const renderHistory = (results) => {
-    if (results && results.length > 0) {
+  const renderHistory = (searches) => {
+    if (searches && searches.length > 0) {
       return (
         <ol>
           {
-            results.map((item, index) => {
+            searches.map((item, index) => {
               const time = item.dt && moment.unix(item.dt).format('hh:mm:ss A');
               return (
                 <li key={index}>
@@ -47,7 +47,7 @@ const SearchHistory = (props) => {
     <div className="search-history-container">
       <h2>Search History</h2>
       <hr/>
-      {renderHistory(results)}
+      {renderHistory(searches)}
     </div>
   );
 }
