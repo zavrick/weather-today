@@ -1,21 +1,23 @@
 import { connect } from 'react-redux';
+import { useState, useEffect } from 'react';
+import SearchForm from './components/searchForm';
 import './App.css';
-import { fetchWeather } from './actions/weatherActions';
 
-const App = (state) => {
+const App = (props) => {
+  const [weather, setWeather] = useState(props.weather);
+  useEffect(() => {
+    setWeather(props.weather);
+  }, [props.weather]);
+
   return (
     <div className="App">
       <h1>Today's Weather</h1>
-      <button onClick={() => state.fetchWeather('Singapore')}>Singapore</button>
       <hr/>
-      {state.weather.weather.map((item, index) => {
-        return (
-          <div key={index}>
-            <h3>{item.name}</h3>
-            <p>{item.main.temp}</p>
-          </div>
-        );}
-      )}
+      <SearchForm />
+      <div>
+        <h3>{weather?.weather?.name}</h3>
+        <p>{weather?.weather?.main?.temp}</p>
+      </div>
     </div>
   );
 }
@@ -26,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchWeather })(App);
+export default connect(mapStateToProps)(App);
