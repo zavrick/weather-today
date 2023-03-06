@@ -1,9 +1,11 @@
 import { SET_WEATHER, SET_WEATHER_ERROR } from './types';
 import { saveSearch } from './searchHistoryActions';
 
-export const fetchWeather = (city) => (dispatch) => {
+export const fetchWeather = (search) => (dispatch) => {
+  const { city, country } = search;
+  const searchString = `${city ? city : ''}${city && country ? ', ' : ''}${country}`;
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?q=${searchString}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}&units=metric`
   )
     .then((res) => {
       if (!res.ok) {
@@ -20,7 +22,7 @@ export const fetchWeather = (city) => (dispatch) => {
         type: SET_WEATHER,
         payload: weather,
       })
-      saveSearch(weather)(dispatch);
+      saveSearch({searchString, search, time: Date.now(), result: weather})(dispatch);
 })
     .catch((err) =>
       dispatch({
@@ -28,11 +30,4 @@ export const fetchWeather = (city) => (dispatch) => {
         payload: err.message,
       })
     );
-}
-
-export const loadWeather = (weather) => (dispatch) => {
-  dispatch({
-    type: SET_WEATHER,
-    payload: weather,
-  });
-}
+};

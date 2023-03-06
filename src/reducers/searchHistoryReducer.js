@@ -1,7 +1,11 @@
-import { SAVE_SEARCH, FETCH_SEARCHES } from "../actions/types";
+import { SAVE_SEARCH, FETCH_SEARCHES, SET_SEARCH } from "../actions/types";
 
 const initialState = {
   searches: [],
+  search: {
+    city: '',
+    country: '',
+  },
 };
 
 const searchHistoryReducer = (state = initialState, action) => {
@@ -15,6 +19,11 @@ const searchHistoryReducer = (state = initialState, action) => {
       return {
         ...state,
         searches: action.payload,
+      };
+    case SET_SEARCH:
+      return {
+        ...state,
+        search: action.payload,
       };
     default:
       return state;

@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { setSearch } from '../actions/searchHistoryActions';
 import { fetchWeather } from '../actions/weatherActions';
 import './searchForm.css';
 
 const SearchForm = (props) => {
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
+  const dispatch = useDispatch();
+  const [city, setCity] = useState(props.search?.city);
+  const [country, setCountry] = useState(props.search?.country);
+
+  useEffect(() => {
+    setCity(props.search?.city);
+    setCountry(props.search?.country);
+  }, [props.search]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const searchString = `${city ? `${city},` : ''}${country}`;
-
-    props.fetchWeather(searchString);
+    props.fetchWeather({ city, country });
   };
 
   const handleClear = (e) => {
     e.preventDefault();
     setCity('');
     setCountry('');
+    dispatch(setSearch({ city: '', country: ''}))
   };
 
   return (
@@ -47,6 +53,7 @@ const SearchForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     weather: state.weather,
+    search: state.searchHistory.search,
   };
 }
 
