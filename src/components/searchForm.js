@@ -9,7 +9,9 @@ const SearchForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.fetchWeather(`${city}, ${country}`);
+    const searchString = `${city ? `${city},` : ''}${country}`;
+
+    props.fetchWeather(searchString);
   };
 
   const handleClear = (e) => {
