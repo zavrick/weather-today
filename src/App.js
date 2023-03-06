@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
+import { fetchWeather } from './actions/weatherActions';
 
-function App() {
+const App = (state) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Today's Weather</h1>
+      <button onClick={() => state.fetchWeather('Singapore')}>Singapore</button>
+      <hr/>
+      {state.weather.weather.map((item, index) => {
+        return (
+          <div key={index}>
+            <h3>{item.name}</h3>
+            <p>{item.main.temp}</p>
+          </div>
+        );}
+      )}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    weather: state.weather,
+  };
+};
+
+export default connect(mapStateToProps, { fetchWeather })(App);
