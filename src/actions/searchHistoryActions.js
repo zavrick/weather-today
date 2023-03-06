@@ -18,3 +18,14 @@ export const fetchSearches = () => (dispatch) => {
     payload: results,
   });
 }
+
+export const deleteSearch = (id) => (dispatch) => {
+  const results = JSON.parse(localStorage.getItem("results"));
+  const index = results.findIndex((result) => result.id === id);
+  results.splice(index, 1);
+  localStorage.setItem("results", JSON.stringify(results));
+  dispatch({
+    type: FETCH_RESULTS,
+    payload: results,
+  });
+}

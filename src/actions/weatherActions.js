@@ -29,3 +29,10 @@ export const fetchWeather = (city) => (dispatch) => {
       })
     );
 }
+
+export const loadWeather = (weather) => (dispatch) => {
+  dispatch({
+    type: SET_WEATHER,
+    payload: weather,
+  });
+}
